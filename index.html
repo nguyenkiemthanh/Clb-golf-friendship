@@ -1600,8 +1600,8 @@
                 <div class="sm:col-span-3">
                   <label for="clubFormulaSelect" class="block text-[11px] font-bold uppercase text-[#E2C178] mb-1">3. Công Thức Quy Đổi</label>
                   <select id="clubFormulaSelect" class="w-full px-3 py-2 rounded-xl bg-[#0A2F1D] border border-[#C89D45]/50 text-white text-xs font-semibold focus:outline-none focus:border-[#E2C178]">
-                    <option value="WHS_FULL" selected>WHS Chuẩn: Index×Slope/113+(CR-Par)</option>
-                    <option value="WHS_SIMPLE">Rút gọn: Làm tròn(Index×Slope/113)</option>
+                    <option value="WHS_FULL">WHS Quốc tế: Index×Slope/113+(CR-Par)</option>
+                    <option value="WHS_SIMPLE" selected>vHandicap (VGA): Làm tròn(Index×Slope/113)</option>
                   </select>
                 </div>
               </div>
@@ -3685,7 +3685,7 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
       var activeCourseConfig = {
         courseId: 'longbien-ab',
         teeKey: 'blue',
-        formula: 'WHS_FULL',
+        formula: 'WHS_SIMPLE',
         customName: 'Sân Golf Giao Lưu',
         customSlope: 128,
         customRating: 71.5,
@@ -3715,7 +3715,7 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
             slope: parseFloat(activeCourseConfig.customSlope) || 128,
             rating: parseFloat(activeCourseConfig.customRating) || 71.5,
             par: parseInt(activeCourseConfig.customPar, 10) || 72,
-            formula: activeCourseConfig.formula || 'WHS_FULL'
+            formula: activeCourseConfig.formula || 'WHS_SIMPLE'
           };
         }
         var teeObj = (found.tees && found.tees[activeCourseConfig.teeKey]) ? found.tees[activeCourseConfig.teeKey] : found.tees.blue;
@@ -3726,7 +3726,7 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
           slope: teeObj.slope,
           rating: teeObj.rating,
           par: found.par || 72,
-          formula: activeCourseConfig.formula || 'WHS_FULL'
+          formula: activeCourseConfig.formula || 'WHS_SIMPLE'
         };
       }
 
@@ -3931,8 +3931,9 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
           var spanClass = item.colSpan || 'lg:col-span-6';
           return (
             '<div data-gallery-cat="' + item.cat + '" data-gallery-index="' + idx + '" class="gallery-item ' + spanClass + isHidden + ' group relative rounded-3xl overflow-hidden shadow-lg cursor-pointer h-80 sm:h-96 border border-[#C89D45]/25">' +
+              '<button type="button" data-delete-gallery="' + idx + '" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/40 text-white/75 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all z-20 opacity-0 group-hover:opacity-100" title="Xóa ảnh này"><i class="fa-solid fa-trash-can text-sm pointer-events-none"></i></button>' +
               '<img src="' + item.src + '" alt="' + item.title + '" class="gallery-zoom w-full h-full object-cover" />' +
-              '<div class="absolute inset-0 bg-gradient-to-t from-[#072215]/90 via-transparent to-transparent flex flex-col justify-end p-6 text-white">' +
+              '<div class="absolute inset-0 bg-gradient-to-t from-[#072215]/90 via-transparent to-transparent flex flex-col justify-end p-6 text-white pointer-events-none">' +
                 '<span class="text-[11px] uppercase tracking-widest text-[#E2C178] font-semibold">' + (item.cat === 'trophy' ? 'Cúp Vàng &amp; Gala' : (item.cat === 'swing' ? 'Kỹ thuật &amp; Swing' : 'Không gian Sân Golf')) + '</span>' +
                 '<h3 class="font-serif-luxury text-2xl font-bold mt-0.5">' + item.title + '</h3>' +
                 '<p class="text-xs text-white/75 mt-1">' + item.subtitle + '</p>' +
@@ -5079,7 +5080,7 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
 
         var activeSpecs = getActiveCourseSpecs();
         var rawCourseHdc = (hIndex * slope) / 113.0;
-        if (!activeSpecs || activeSpecs.formula === 'WHS_FULL') {
+        if (activeSpecs && activeSpecs.formula === 'WHS_FULL') {
           rawCourseHdc = rawCourseHdc + (rating - par);
         }
         var courseHdc = Math.max(0, Math.round(rawCourseHdc));
@@ -5285,7 +5286,7 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
         }
         if (teeSel) teeSel.value = activeCourseConfig.teeKey || 'blue';
         if (calcTeeSel) calcTeeSel.value = activeCourseConfig.teeKey || 'blue';
-        if (formulaSel) formulaSel.value = activeCourseConfig.formula || 'WHS_FULL';
+        if (formulaSel) formulaSel.value = activeCourseConfig.formula || 'WHS_SIMPLE';
         populateCalcMemberDropdown();
 
         var cNameIn = document.getElementById('customCourseNameInput');
