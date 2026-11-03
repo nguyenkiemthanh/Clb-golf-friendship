@@ -2863,7 +2863,77 @@
     </div>
   </div>
 
-  <!-- MODAL 2: LIGHTBOX GALLERY & SAVED REGISTRATIONS / RULES MODAL -->
+  
+    <!-- Birthday E-Card Hub Modal -->
+    <div id="birthdayECardModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeBirthdayECardModal()"></div>
+      <div class="relative bg-gradient-to-b from-[#0A2F1D] to-[#05180E] border-2 border-[#C89D45]/70 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8">
+        <button type="button" onclick="closeBirthdayECardModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all"><i class="fa-solid fa-xmark"></i></button>
+        
+        <div class="flex items-center gap-3 mb-6 border-b border-[#C89D45]/30 pb-4">
+          <div class="w-12 h-12 rounded-xl bg-gold-gradient text-[#072215] flex items-center justify-center font-bold text-2xl flex-shrink-0 shadow-md">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-[#E2C178]">Tiện ích Công đoàn</span>
+            <h3 class="font-serif-luxury text-2xl sm:text-3xl font-bold text-white leading-tight">Thiệp Sinh Nhật &amp; Lời Chúc Zalo</h3>
+          </div>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="p-4 rounded-2xl bg-[#04150D] border border-white/10">
+            <h4 class="text-sm font-bold text-[#E2C178] mb-3 uppercase tracking-wider"><i class="fa-solid fa-copy mr-1.5"></i> Mẫu Lời Chúc Zalo (Chạm để Copy)</h4>
+            <div class="space-y-3">
+              <button type="button" onclick="copyToClipboard('Thay mặt CLB Golf Friendship, xin gửi lời chúc mừng sinh nhật tốt đẹp nhất đến anh {TEN}. Chúc anh tuổi mới luôn dồi dào sức khỏe, thành công rực rỡ trong sự nghiệp và luôn giữ được ngọn lửa đam mê, liên tục hạ HDC trên sân cỏ. Happy Birthday!')" class="w-full text-left p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-[#C89D45]/30 text-white/85 text-xs sm:text-sm transition-all group">
+                <div class="flex justify-between items-start gap-2">
+                  <p><strong>Mẫu 1 (Trang trọng):</strong> "Thay mặt CLB Golf Friendship, xin gửi lời chúc mừng sinh nhật tốt đẹp nhất đến anh [Tên]..."</p>
+                  <i class="fa-solid fa-clone text-[#C89D45] opacity-50 group-hover:opacity-100 mt-1"></i>
+                </div>
+              </button>
+              <button type="button" onclick="copyToClipboard('Chúc mừng sinh nhật anh {TEN}! Chúc anh tuổi mới vạn sự như ý, sức khỏe dồi dào, đánh đâu trúng đó, birdie ngập tràn và sớm ghi HIO. Anh em CLB Golf Friendship luôn đồng hành cùng anh!')" class="w-full text-left p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-[#C89D45]/30 text-white/85 text-xs sm:text-sm transition-all group">
+                <div class="flex justify-between items-start gap-2">
+                  <p><strong>Mẫu 2 (Gần gũi, Golf):</strong> "Chúc mừng sinh nhật anh [Tên]! Chúc anh tuổi mới vạn sự như ý, sức khỏe dồi dào, birdie ngập tràn..."</p>
+                  <i class="fa-solid fa-clone text-[#C89D45] opacity-50 group-hover:opacity-100 mt-1"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold text-[#E2C178] mb-3 uppercase tracking-wider"><i class="fa-solid fa-image mr-1.5"></i> Mẫu Thiệp Mừng (E-Card)</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="rounded-xl overflow-hidden border-2 border-[#C89D45]/40 relative group">
+                <div class="aspect-[4/3] bg-[#04150D] flex items-center justify-center p-4 text-center">
+                  <div>
+                    <i class="fa-solid fa-cake-candles text-4xl text-[#E2C178] mb-2"></i>
+                    <h5 class="font-serif-luxury text-xl font-bold text-white">Happy Birthday</h5>
+                    <p class="text-[10px] text-[#C89D45] uppercase tracking-widest mt-1">CLB Golf Friendship</p>
+                  </div>
+                </div>
+                <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all gap-2">
+                  <span class="text-white text-xs font-semibold">Mẫu Tiêu Chuẩn</span>
+                  <button type="button" onclick="showToast('Đang tải thiệp xuống máy...')" class="px-3 py-1.5 rounded-lg bg-gold-gradient text-[#072215] text-xs font-bold shadow-md"><i class="fa-solid fa-download mr-1"></i> Tải Thiệp</button>
+                </div>
+              </div>
+              <div class="rounded-xl overflow-hidden border-2 border-[#C89D45]/40 relative group">
+                <div class="aspect-[4/3] bg-gradient-to-br from-[#072215] to-[#134B30] flex items-center justify-center p-4 text-center">
+                  <div>
+                    <i class="fa-solid fa-champagne-glasses text-4xl text-white mb-2"></i>
+                    <h5 class="font-serif-luxury text-xl font-bold text-[#E2C178]">Chúc Mừng Sinh Nhật</h5>
+                    <p class="text-[10px] text-white/70 uppercase tracking-widest mt-1">Nơi kết nối đam mê</p>
+                  </div>
+                </div>
+                <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all gap-2">
+                  <span class="text-white text-xs font-semibold">Mẫu Premium</span>
+                  <button type="button" onclick="showToast('Đang tải thiệp xuống máy...')" class="px-3 py-1.5 rounded-lg bg-gold-gradient text-[#072215] text-xs font-bold shadow-md"><i class="fa-solid fa-download mr-1"></i> Tải Thiệp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- MODAL 2: LIGHTBOX GALLERY & SAVED REGISTRATIONS / RULES MODAL -->
   <div id="infoLightboxModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true">
     <div class="bg-[#072215] text-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-[#C89D45]/50 my-8">
       <div class="px-6 py-4 bg-[#04150D] flex items-center justify-between border-b border-white/10">
@@ -5449,8 +5519,38 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
         URL.revokeObjectURL(url);
       }
 
-      // Initialize Everything on DOMContentLoaded
+      
+      // Birthday E-Card Hub Logic
+      function openBirthdayECardModal() {
+        var modal = document.getElementById('birthdayECardModal');
+        if (modal) modal.classList.remove('hidden');
+      }
+      function closeBirthdayECardModal() {
+        var modal = document.getElementById('birthdayECardModal');
+        if (modal) modal.classList.add('hidden');
+      }
+      function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function() {
+            showToast('Đã copy lời chúc vào khay nhớ tạm!');
+          });
+        } else {
+          // fallback
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          showToast('Đã copy lời chúc vào khay nhớ tạm!');
+        }
+      }
+
+// Initialize Everything on DOMContentLoaded
       document.addEventListener('DOMContentLoaded', function () {
+        var btnECard = document.getElementById('btnOpenBirthdayECardHub');
+        if (btnECard) btnECard.addEventListener('click', openBirthdayECardModal);
+
         initCourseSelectorUI();
         renderTournaments('all');
         renderGalleryGrid('all');
@@ -6001,6 +6101,21 @@ TM. Ban Chấp Hành CLB Golf Friendship</textarea>
         var galleryGridEl = document.getElementById('galleryGrid');
         if (galleryGridEl) {
           galleryGridEl.addEventListener('click', function (e) {
+            var delBtn = e.target.closest('[data-delete-gallery]');
+            if (delBtn) {
+              e.stopPropagation();
+              var delIdx = parseInt(delBtn.getAttribute('data-delete-gallery'), 10);
+              if (confirm('Bạn có chắc chắn muốn xóa ảnh này khỏi thư viện?')) {
+                galleryItemsData.splice(delIdx, 1);
+                try {
+                  localStorage.setItem(GALLERY_STORAGE_KEY, JSON.stringify(galleryItemsData));
+                } catch (err) {}
+                renderGalleryGrid();
+                showToast('Đã xóa ảnh thành công!');
+              }
+              return;
+            }
+            
             var card = e.target.closest('.gallery-item');
             if (card) {
               var idx = parseInt(card.getAttribute('data-gallery-index') || '0', 10);
